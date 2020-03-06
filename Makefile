@@ -71,7 +71,7 @@ release: env build/backy2.pex deb
 	RELEASE_ID=$$(curl -sH "Authorization: token $(GITHUB_ACCESS_TOKEN)" https://api.github.com/repos/wamdam/backy2/releases/tags/v$(CURRENT_VERSION) | grep -m 1 "id.:" | grep -w id | tr : = | tr -cd '=[[:alnum:]]' | cut -d '=' -f 2); \
 	curl -i -H "Authorization: token $(GITHUB_ACCESS_TOKEN)" -H "Accept: application/vnd.github.manifold-preview" -H "Content-Type: application/octet-stream" --data-binary @dist/backy2_$(CURRENT_VERSION)_all.deb https://uploads.github.com/repos/wamdam/backy2/releases/$$RELEASE_ID/assets\?name\=backy2_$(CURRENT_VERSION)_all.deb; \
 	curl -i -H "Authorization: token $(GITHUB_ACCESS_TOKEN)" -H "Accept: application/vnd.github.manifold-preview" -H "Content-Type: application/octet-stream" --data-binary @build/backy2.pex https://uploads.github.com/repos/wamdam/backy2/releases/$$RELEASE_ID/assets\?name\=backy2.pex; \
-	curl -i -H "Authorization: token $(GITHUB_ACCESS_TOKEN)" -H "Accept: application/vnd.github.manifold-preview" -H "Content-Type: application/octet-stream" --data-binary @dist/backy2-$(CURRENT_VERSION).tar.gz https://uploads.github.com/repos/wamdam/backy2/releases/$$RELEASE_ID/assets\?name\=bacly2_$(CURRENT_VERSION).tar.gz
+	curl -i -H "Authorization: token $(GITHUB_ACCESS_TOKEN)" -H "Accept: application/vnd.github.manifold-preview" -H "Content-Type: application/octet-stream" --data-binary @dist/backy2-$(CURRENT_VERSION).tar.gz https://uploads.github.com/repos/wamdam/backy2/releases/$$RELEASE_ID/assets\?name\=backy2_$(CURRENT_VERSION).tar.gz
 
 	# docs release
 	@echo "--------------------------------------------------------------------------------"
